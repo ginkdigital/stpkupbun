@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'STP Khoiru Ummah Pangkalan Bun',
+  description = 'Sekolah Islam Tahfizh Plus Khoiru Ummah Pangkalan Bun - Dari TK Hingga SMA Mencetak Generasi Hafizh Pembangun Peradaban'
+} = Astro.props;
+
+const institution = {
+  name: 'STP Khoiru Ummah Pangkalan Bun',
+  shortName: 'STPKU',
+  tagline: 'Sekolah Penghafal Al-Qur\'an dan Pemimpin Masa Depan',
+  phone: 'klikaja.app/tanyakupbun',
+  wa: 'https://wa.me/6281234567890',
+};
+---
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="geo-bg">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-emerald-600/10 px-6 py-3.5">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5 no-underline">
+          <span class="bg-emerald-600 text-white text-xs font-bold tracking-wider uppercase px-2.5 py-1.5 rounded">
+            DonasiKU
+          </span>
+          <span class="text-sm text-ink-muted font-medium">
+            {institution.shortName} Pangkalan Bun
+          </span>
+        </a>
+        <a
+          href="/donasiku"
+          class="bg-gold-500 text-ink text-xs font-bold px-4 py-2 rounded-md hover:bg-gold-300 transition-all duration-200"
+        >
+          Donasi Sekarang
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-white/50 text-center py-7 px-6">
+      <div class="text-sm">
+        <strong class="text-white/80">SD Tahfizh Plus Khoiru Ummah — Pangkalan Bun</strong><br>
+        Kotawaringin Barat, Kalimantan Tengah · Berdiri 2018<br>
+        <span class="mt-2 block">Dikelola oleh <strong>GINK Digital</strong></span>
+      </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      // Reveal on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Progress bar animation
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const fill = entry.target.querySelector('.progress-bar-fill');
+            if (fill) {
+              const width = fill.style.width;
+              fill.style.width = '0%';
+              setTimeout(() => { fill.style.width = width; }, 100);
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.progress-card').forEach(el => barObserver.observe(el));
+    </script>
+  </body>
+</html>

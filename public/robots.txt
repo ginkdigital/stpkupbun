@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /aiku-nisa-generator/
+
+Sitemap: https://stpkupangkalanbun.pages.dev/sitemap-index.xml
