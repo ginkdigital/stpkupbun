@@ -8,7 +8,7 @@ Website static untuk STP Khoiru Ummah Pangkalan Bun — sekolah Islam tahfizh di
 
 ```
 Repository: https://github.com/ginkdigital/stpkupbun
-Live URL: https://stpkupangkalanbun.pages.dev
+Live URL: https://stpkupbun.pages.dev
 ```
 
 ## Tech Stack
