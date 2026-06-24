@@ -2,14 +2,23 @@
 
 ## Project Overview
 
-Website static untuk STP Khoiru Ummah Pangkalan Bun — sekolah Islam tahfizh di Kalimantan Tengah. Project ini membangun ulang website dari WordPress ke Astro + Cloudflare Pages untuk kontrol penuh dan performa optimal.
+Website static untuk STP Khoiru Ummah Pangkalan Bun — sekolah Islam tahfizh di Kalimantan Tengah. Project membangun ulang website dari WordPress ke Astro + Cloudflare Pages dengan desain yang purposeful dan distinctive.
 
-**Target utama:** Landing page fundraising DonasiKU dengan goal Rp 195.000.000 untuk program IQC (Islamic Quiz Competition) dan HIT (Halaqah Intensive Training) 2026.
+**Target:** Landing page fundraising DonasiKU dengan goal Rp 195.000.000 untuk program IQC (Islamic Quiz Competition) dan HIT (Historical Islamic Trip) 2026.
 
 ```
 Repository: https://github.com/ginkdigital/stpkupbun
 Live URL: https://stpkupbun.pages.dev
 ```
+
+## Design Philosophy
+
+Mengikuti prinsip **frontend-design** skill:
+- **Signature Element** — Logo KU mark sebagai visual anchor
+- **Boldness in ONE place** — Hero headline saja bold, sisanya restrained
+- **Structure = Truth** — Layout purposeful, setiap section punya meaning
+- **Islamic Identity** — Geometric star pattern, gold accent, emerald primary
+- **Dark/Light Contrast** — Ink dark sections ↔ white content sections
 
 ## Tech Stack
 
@@ -22,68 +31,89 @@ Live URL: https://stpkupbun.pages.dev
 
 ## Pages
 
-| Page | Path | Status | Description |
-|------|------|--------|-------------|
-| Beranda | `/` | ✅ | Landing page utama dengan hero, info sekolah, program |
-| DonasiKU | `/donasiku` | ✅ | Landing page fundraising dengan progress tracker |
-| Blog | `/blog` | ⏳ | Daftar artikel SEO |
-| Blog Post | `/blog/[slug]` | ⏳ | Template artikel individual |
-| AIKU Generator | `/aiku-nisa-generator` | ⏳ | Tools internal (proteksi Cloudflare Access) |
+| Page | Path | Status |
+|------|------|--------|
+| Beranda | `/` | ✅ Selesai |
+| DonasiKU | `/donasiku` | ✅ Selesai |
+| Blog | `/blog` | ⏳ Pending |
+| Blog Post | `/blog/[slug]` | ⏳ Pending |
+| AIKU Generator | `/aiku-nisa-generator` | ⏳ Pending |
 
 ## Design System
 
-### Colors (Tailwind CSS Custom)
+### Color Palette
 
 ```css
-/* Primary */
---emerald-600: #1a6b4a   /* Tombol utama, heading */
---emerald-500: #2d8a61   /* Hover state */
---emerald-100: #e8f4ef   /* Background pale */
+/* Primary - Emerald (Hijau Islami) */
+--emerald-600: #1a6b4a   /* Main buttons, headings */
+--emerald-500: #2d8a61   /* Hover states */
+--emerald-100: #e8f4ef     /* Light backgrounds */
 
-/* Accent */
---gold-500: #c9a84c      /* Badge, highlight */
---gold-300: #f0d98a       /* Hover */
---gold-100: #fdf8ec       /* Background pale */
+/* Accent - Gold (Emas) */
+--gold-500: #c9a84c        /* Highlights, badges */
+--gold-300: #f0d98a        /* Hover */
+--gold-100: #fdf8ec        /* Light backgrounds */
 
-/* Text */
---ink: #1a1f1c           /* Primary text */
---ink-muted: #4a5550      /* Secondary text */
---ink-faint: #8a9890      /* Tertiary text */
-
-/* Background */
---cream: #faf7f2         /* Main background */
---white: #ffffff
+/* Dark (Ink) - Background utama */
+--ink: #1a1f1c              /* Dark sections */
+--ink-muted: #4a5550        /* Text on light */
+--ink-faint: #8a9890        /* Tertiary text */
 
 /* Utility */
---wa: #25D366            /* WhatsApp CTA */
---red-progress: #dc4a3d  /* Progress "kurang" */
---border: rgba(26, 107, 74, 0.15)
+--wa: #25D366               /* WhatsApp green CTA */
+--red-progress: #dc4a3a     /* Progress "kurang" */
 ```
 
-### Fonts
+### Typography
 
-```html
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+| Usage | Font | Weight |
+|-------|------|--------|
+| Headings | Amiri (serif) | 700 (bold) |
+| Arabic text | Amiri (serif) | 400 (normal) |
+| Body | Plus Jakarta Sans | 400-600 |
+| Labels | Plus Jakarta Sans | 600-700 (semibold-bold) |
+
+### Visual Hierarchy
+
 ```
-
-| Usage | Font |
-|-------|------|
-| Headings, Arabic text | `Amiri` (serif) |
-| Body text | `Plus Jakarta Sans` (sans-serif) |
+┌─────────────────────────────────┐
+│  NAV (dark)                      │
+│  [KU logo] STPKU  [Donasi Now]  │
+├─────────────────────────────────┤
+│  HERO (islamic-pattern)          │
+│         KU MARK                  │  ← Signature element
+│    Headline (bold ONE place)     │
+│    Stats bar                     │
+│    [CTA Button]                 │
+├─────────────────────────────────┤
+│  SECTION (white bg)              │  ← Content truth
+│  School info, stats grid         │
+├─────────────────────────────────┤
+│  SECTION (dark bg)               │
+│  Program cards                   │
+├─────────────────────────────────┤
+│  SECTION (emerald bg)            │
+│  Progress tracker               │
+├─────────────────────────────────┤
+│  FOOTER (dark)                  │
+│  Minimal copyright               │
+└─────────────────────────────────┘
+```
 
 ### Components
 
-| Class | Usage | Styles |
-|-------|-------|---------|
-| `.geo-bg` | Background pattern | SVG geometric Islamic pattern |
-| `.reveal` | Scroll animation | fade-up on viewport entry |
-| `.animate-fade-up` | Hero animation | staggered fade-in |
-| `.progress-bar-fill` | Progress bar | gradient emerald→gold, 1.5s transition |
+| Class | Purpose |
+|-------|---------|
+| `.islamic-pattern` | Hero background dengan radial gradient + subtle pattern |
+| `.section-light` | White background sections (ink text) |
+| `.reveal` | Scroll-triggered fade-up animation |
+| `.animate-fade-up` | Hero staggered entrance |
+| `.progress-card` | Progress bar container |
+| `.progress-bar-fill` | Animated progress fill |
 
-## Data Institution (Hardcoded)
+## Data Institution
 
-Data ini di-hardcode di `src/layouts/BaseLayout.astro` dan digunakan di seluruh halaman.
+Hardcoded di `src/layouts/BaseLayout.astro` dan page files:
 
 ```javascript
 const institution = {
@@ -104,71 +134,62 @@ const institution = {
 }
 ```
 
-### Koordinat & Geo
-
+### Geo Data
 ```
 Latitude: -2.6833
 Longitude: 111.6167
 Postal Code: 74112
 ```
 
-## SEO Configuration
+## SEO
 
 ### robots.txt
 ```
 User-agent: *
 Allow: /
 Disallow: /aiku-nisa-generator/
-Sitemap: https://stpkupangkalanbun.pages.dev/sitemap-index.xml
+Sitemap: https://stpkupbun.pages.dev/sitemap-index.xml
 ```
 
-### JSON-LD Schema (DonasiKU)
+### JSON-LD Schema
 
-EducationalOrganization + DonateAction schema di `src/pages/donasiku.astro`.
-
-### Sitemap
-
-Auto-generated oleh `@astrojs/sitemap` → `/sitemap-index.xml`
+EducationalOrganization + DonateAction di `src/pages/donasiku.astro`
 
 ## Pending Tasks
 
 ### High Priority
-1. **Blog + 19 Artikel** — Setup Content Collections, migrate 19 artikel dari masco_19_artikelseo.json
-2. **Submit sitemap ke GSC** — Google Search Console verification
-3. **Redirect 301** — WordPress lama → Astro baru
+1. **Blog + 19 Artikel** — Content Collections + markdown dari masco_19_artikelseo.json
+2. **Submit sitemap ke GSC** — Google Search Console
+3. **Redirect 301** — WordPress lama → stpkupbun.pages.dev
 
 ### Medium Priority
-4. **AIKU Generator Page** — Tools internal dengan Cloudflare Access protection
-5. **Image Assets** — Copy logo dan gambar dari ImageKU/ ke public/
+4. **AIKU Generator** — Cloudflare Access protection
+5. **Image Assets** — Copy dari ImageKU/ ke public/
 
 ### Low Priority
-6. **Performance Optimization** — Image lazy loading, font optimization
-7. **Analytics** — Cloudflare Analytics atau alternatif
+6. **Performance** — Lazy loading, font optimization
+7. **Analytics** — Cloudflare Analytics
 
 ## Reference Files
 
-### Brief & Task Files
+### Brief & Task
 ```
-../MascoKU/Brief_Build_Astro_STPKU_CloudflarePages.md  - Spesifikasi teknis lengkap
-../MascoKU/masco_19_artikelseo.json                    - Blueprint 19 artikel blog
-../MascoKU/Task15_Artikel_Pilar_DonasiKU.md            - Konten pilar DonasiKU
-../MascoKU/Task16_GEO_Schema_Markup_DonasiKU.md         - JSON-LD schema markup
-../MascoKU/Task17_Jadwal_19_Artikel_SEO.md            - Jadwal publikasi artikel
-../MascoKU/Task18_OnPage_SEO_Internal_Linking.md      - SEO internal linking
+../MascoKU/Brief_Build_Astro_STPKU_CloudflarePages.md
+../MascoKU/masco_19_artikelseo.json
+../MascoKU/Task15_Artikel_Pilar_DonasiKU.md
+../MascoKU/Task16_GEO_Schema_Markup_DonasiKU.md
 ```
 
 ### Design Reference
 ```
-../MascoKU/donasiku_page.html   - Reference HTML lengkap dari slugpost.com
+../MascoKU/donasiku_page.html   - Reference HTML dari slugpost.com
 ```
 
-### Aset Gambar
+### Aset
 ```
-../ImageKU/                         - Folder source gambar
-  Copy of Logo KU.png              - Logo hexagonal hijau
-  Copy of STP Khoiru Ummah Pangkalan Bun.jpg  - Logo dengan teks
-  Copy of flayer SPMB.jpg          - Poster SPMB SD
-  Donasi/IQC.jpg, HIT.jpg         - Gambar program donasi
+../ImageKU/                    - Source gambar
+  Logo KU.png                 - Logo hexagonal
+  Donasi/IQC.jpg, HIT.jpg    - Program images
 ```
 
 ## Project Structure
@@ -177,53 +198,42 @@ Auto-generated oleh `@astrojs/sitemap` → `/sitemap-index.xml`
 stpkupbun/
 ├── src/
 │   ├── layouts/
-│   │   └── BaseLayout.astro      # Main layout (nav + footer + scripts)
+│   │   └── BaseLayout.astro     # Nav, footer, scripts
 │   ├── pages/
 │   │   ├── index.astro          # Landing page
 │   │   ├── donasiku.astro       # Donation page
 │   │   └── blog/
-│   │       ├── index.astro      # Blog listing (pending)
-│   │       └── [slug].astro     # Article template (pending)
+│   │       ├── index.astro     # (pending)
+│   │       └── [slug].astro    # (pending)
 │   ├── content/
-│   │   └── blog/                # Markdown articles (pending)
+│   │   └── blog/               # (pending)
 │   └── styles/
-│       └── global.css           # Tailwind + custom theme
+│       └── global.css          # Tailwind + theme
 ├── public/
 │   ├── favicon.svg
-│   ├── robots.txt
-│   └── images/                  # Optimized images (pending)
+│   └── robots.txt
 ├── astro.config.mjs
-├── tailwind.config.js           # (Astro v4 auto-detect)
 ├── package.json
-└── CLAUDE.md                    # This file
+└── CLAUDE.md
 ```
 
 ## Workflow
 
-### Daily Development
+### Development
 ```bash
-# 1. Start dev server
-npm run dev
-
-# 2. Build for production
-npm run build
-
-# 3. Preview build
-npm run preview
+npm run dev      # Dev server
+npm run build    # Production build
+npm run preview  # Preview build
 ```
 
 ### Deployment
-- Push ke `main` branch → auto-deploy ke Cloudflare Pages
-- URL: `stpkupangkalanbun.pages.dev`
-
-### Content Update
-1. Edit `.astro` files untuk page changes
-2. Add markdown files ke `src/content/blog/` untuk artikel baru
-3. Push → Cloudflare auto-rebuild
+- Push ke `main` → auto-deploy Cloudflare Pages
+- URL: `https://stpkupbun.pages.dev`
 
 ## Notes
 
-- Website masih dalam development (Task #51 selesai ✅)
-- Data donasi masih hardcoded — belum ada CMS/database
-- AIKU Generator menggunakan Cloudflare Access untuk proteksi
-- Logo dan gambar belum di-copy ke `/public` — masih referensi path eksternal
+- Desain mengikuti frontend-design principles
+- Dark/light contrast untuk visual hierarchy
+- Data masih hardcoded (belum CMS)
+- AIKU Generator pakai Cloudflare Access
+- Logo/gambar perlu di-copy ke /public
