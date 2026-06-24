@@ -32,21 +32,25 @@ const institution = {
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="geo-bg">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-emerald-600/10 px-6 py-3.5">
-      <div class="max-w-6xl mx-auto flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2.5 no-underline">
-          <span class="bg-emerald-600 text-white text-xs font-bold tracking-wider uppercase px-2.5 py-1.5 rounded">
-            DonasiKU
-          </span>
-          <span class="text-sm text-ink-muted font-medium">
-            {institution.shortName} Pangkalan Bun
-          </span>
+  <body class="bg-ink">
+    <!-- Navigation - Minimal, Dark -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-ink/95 backdrop-blur-md border-b border-white/10 px-6 py-4">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        <!-- Logo Mark -->
+        <a href="/" class="flex items-center gap-3 no-underline group">
+          <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-gold-500 font-serif text-xl font-bold group-hover:bg-emerald-500 transition-colors">
+            KU
+          </div>
+          <div class="hidden sm:block">
+            <span class="text-white font-semibold text-sm">STPKU</span>
+            <span class="block text-white/40 text-xs">Pangkalan Bun</span>
+          </div>
         </a>
+
+        <!-- CTA -->
         <a
           href="/donasiku"
-          class="bg-gold-500 text-ink text-xs font-bold px-4 py-2 rounded-md hover:bg-gold-300 transition-all duration-200"
+          class="bg-emerald-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-emerald-500 transition-colors"
         >
           Donasi Sekarang
         </a>
@@ -58,29 +62,31 @@ const institution = {
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-ink text-white/50 text-center py-7 px-6">
-      <div class="text-sm">
-        <strong class="text-white/80">SD Tahfizh Plus Khoiru Ummah — Pangkalan Bun</strong><br>
-        Kotawaringin Barat, Kalimantan Tengah · Berdiri 2018<br>
-        <span class="mt-2 block">Dikelola oleh <strong>GINK Digital</strong></span>
+    <!-- Footer - Minimal -->
+    <footer class="bg-emerald-600 text-white/80 py-12 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="text-2xl font-serif text-gold-500 mb-4">STP Khoiru Ummah</div>
+        <p class="text-sm text-white/60 mb-6">
+          Kotawaringin Barat, Kalimantan Tengah
+        </p>
+        <div class="text-xs text-white/40">
+          © 2026 · Dikelola oleh GINK Digital
+        </div>
       </div>
     </footer>
 
     <!-- Scroll Reveal Script -->
     <script>
-      // Reveal on scroll
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.1 });
 
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Progress bar animation
       const barObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
