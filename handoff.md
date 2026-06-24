@@ -1,7 +1,7 @@
 # STPKU Pangkalan Bun — Handoff Document
 
 **Tanggal:** 24 Juni 2026
-**Status:** Phase 1 Complete
+**Status:** Phase 1 + Blog Complete
 
 ---
 
@@ -37,6 +37,19 @@ Live URL: https://stpkupbun.pages.dev
 - [x] Amiri + Plus Jakarta Sans fonts
 - [x] Scroll animations
 
+### Blog (NEW)
+- [x] Content Collection setup (Astro v7 glob loader)
+- [x] `/blog` index page
+- [x] `/blog/[slug]` dynamic pages
+- [x] 3 sample articles published
+- [x] Nav link to Blog added
+- [x] Image assets copied (IQC.jpg, HIT.jpg, Logo KU.png)
+
+### Image Assets
+- [x] `public/images/Donasi/IQC.jpg`
+- [x] `public/images/Donasi/HIT.jpg`
+- [x] `public/images/Copy of Logo KU.png`
+
 ---
 
 ## Pending Tasks
@@ -49,52 +62,18 @@ Live URL: https://stpkupbun.pages.dev
 2. **Redirect 301 WordPress → Astro**
    - Hubungi admin WordPress
    - Setup di .htaccess atau plugin Redirection
+   - Note: User perlu akses ke WordPress lama
 
-3. **Copy image assets** ke `/public`
-   - Source: `ImageKU/`
+3. **Write 16 remaining articles** dari masco_19_artikelseo.json
+   - Blueprint ada di `../MascoKU/masco_19_artikelseo.json`
+   - Sudah ada 3 sample posts (draft 1, 2, 3)
+   -剩下 16 articles
 
 ### Medium Priority
-4. **Blog + 19 Artikel** — Blueprint ada di masco_19_artikelseo.json
-5. **AIKU Generator** — Cloudflare Access protection
+4. **AIKU Generator** — Cloudflare Access protection
+5. **Full image copy** dari ImageKU/ ke public/
 
----
-
-## Tech Stack
-
-```
-Astro: 7.x
-Tailwind CSS: v4
-Cloudflare Pages
-```
-
-## Key Files
-
-| File | Purpose |
-|------|---------|
-| src/layouts/BaseLayout.astro | Nav + footer |
-| src/pages/index.astro | Landing page |
-| src/pages/donasiku.astro | Donation page |
-| src/styles/global.css | Theme |
-
-## Workflow
-
-```bash
-npm run dev      # Dev server
-npm run build    # Production build
-git push main    # Auto-deploy Cloudflare
-```
-
----
-
-## Reference Files
-
-```
-../MascoKU/Brief_Build_Astro_STPKU_CloudflarePages.md
-../MascoKU/masco_19_artikelseo.json
-../ImageKU/ (assets)
-```
-
----
-
-**Created:** 24 Juni 2026
-**By:** GINK Digital × Claude Code
+### Low Priority
+6. **Performance** — Lazy loading, font optimization
+7. **Analytics** — Cloudflare Analytics
+8. **OG images** untuk blog posts

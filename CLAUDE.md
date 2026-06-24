@@ -35,8 +35,8 @@ Mengikuti prinsip **frontend-design** skill:
 |------|------|--------|
 | Beranda | `/` | ✅ Selesai |
 | DonasiKU | `/donasiku` | ✅ Selesai |
-| Blog | `/blog` | ⏳ Pending |
-| Blog Post | `/blog/[slug]` | ⏳ Pending |
+| Blog | `/blog` | ✅ Selesai |
+| Blog Post | `/blog/[slug]` | ✅ Selesai |
 | AIKU Generator | `/aiku-nisa-generator` | ⏳ Pending |
 
 ## Design System
@@ -158,24 +158,25 @@ EducationalOrganization + DonateAction di `src/pages/donasiku.astro`
 ## Pending Tasks
 
 ### High Priority
-1. **Blog + 19 Artikel** — Content Collections + markdown dari masco_19_artikelseo.json
-2. **Submit sitemap ke GSC** — Google Search Console
-3. **Redirect 301** — WordPress lama → stpkupbun.pages.dev
+1. **Submit sitemap ke GSC** — Google Search Console
+2. **Redirect 301** — WordPress lama → stpkupbun.pages.dev (butuh akses WordPress admin)
+3. **16 remaining articles** — dari masco_19_artikelseo.json (3 dari 19 sudah)
 
 ### Medium Priority
 4. **AIKU Generator** — Cloudflare Access protection
-5. **Image Assets** — Copy dari ImageKU/ ke public/
+5. **Image Assets** — Copy剩下的 gambar dari ImageKU/ ke public/
 
 ### Low Priority
 6. **Performance** — Lazy loading, font optimization
 7. **Analytics** — Cloudflare Analytics
+8. **OG images** — untuk blog posts
 
 ## Reference Files
 
 ### Brief & Task
 ```
 ../MascoKU/Brief_Build_Astro_STPKU_CloudflarePages.md
-../MascoKU/masco_19_artikelseo.json
+../MascoKU/masco_19_artikelseo.json    # Blueprint 19 artikel (3 done)
 ../MascoKU/Task15_Artikel_Pilar_DonasiKU.md
 ../MascoKU/Task16_GEO_Schema_Markup_DonasiKU.md
 ```
@@ -185,11 +186,11 @@ EducationalOrganization + DonateAction di `src/pages/donasiku.astro`
 ../MascoKU/donasiku_page.html   - Reference HTML dari slugpost.com
 ```
 
-### Aset
+### Aset (sudah dicopy)
 ```
-../ImageKU/                    - Source gambar
-  Logo KU.png                 - Logo hexagonal
-  Donasi/IQC.jpg, HIT.jpg    - Program images
+../MascoKU/ImageKU/
+  Donasi/IQC.jpg, HIT.jpg    ✅ copied ke public/images/Donasi/
+  Copy of Logo KU.png        ✅ copied ke public/images/
 ```
 
 ## Project Structure
@@ -197,21 +198,28 @@ EducationalOrganization + DonateAction di `src/pages/donasiku.astro`
 ```
 stpkupbun/
 ├── src/
+│   ├── content/
+│   │   └── config.ts             # Blog content collection (Astro v7 glob loader)
+│   │   └── blog/                # Blog posts (markdown)
 │   ├── layouts/
 │   │   └── BaseLayout.astro     # Nav, footer, scripts
 │   ├── pages/
-│   │   ├── index.astro          # Landing page
+│   │   ├── index.astro           # Landing page
 │   │   ├── donasiku.astro       # Donation page
 │   │   └── blog/
-│   │       ├── index.astro     # (pending)
-│   │       └── [slug].astro    # (pending)
-│   ├── content/
-│   │   └── blog/               # (pending)
+│   │       ├── index.astro      # Blog listing
+│   │       └── [slug].astro     # Blog post
 │   └── styles/
-│       └── global.css          # Tailwind + theme
+│       └── global.css           # Tailwind + theme
 ├── public/
 │   ├── favicon.svg
-│   └── robots.txt
+│   ├── robots.txt
+│   └── images/
+│       ├── Donasi/
+│       │   ├── IQC.jpg
+│       │   └── HIT.jpg
+│       └── Copy of Logo KU.png
+├── content.config.ts            # Astro v7 content collections config
 ├── astro.config.mjs
 ├── package.json
 └── CLAUDE.md
