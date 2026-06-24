@@ -2,53 +2,37 @@
 
 **Tanggal:** 24 Juni 2026
 **Status:** Phase 1 + Blog Complete
+**Live URL:** https://stpkupbun.pages.dev
 
 ---
 
-## Project Summary
-
-Website static STP Khoiru Ummah Pangkalan Bun — sekolah Islam tahfizh di Kalimantan Tengah. Rebuild dari WordPress ke Astro + Cloudflare Pages.
-
-**Goal:** Landing page DonasiKU dengan target Rp 195.000.000 untuk IQC & HIT 2026.
-
-```
-GitHub: https://github.com/ginkdigital/stpkupbun
-Live URL: https://stpkupbun.pages.dev
-```
-
----
-
-## Completed ✅
+## Yang Sudah Selesai
 
 ### Website
 - [x] Astro 7.x + Tailwind v4
 - [x] Landing page `/`
 - [x] DonasiKU `/donasiku`
-- [x] JSON-LD schema
-- [x] Sitemap
+- [x] Blog `/blog`
+- [x] 3 blog posts published
+- [x] JSON-LD schema (EducationalOrganization + DonateAction)
+- [x] Sitemap auto-generated
 - [x] robots.txt
 - [x] Responsive design
 - [x] Islamic aesthetic (emerald + gold)
 
-### Design
-- [x] Logo KU mark as signature
-- [x] Emerald #1a6b4a + Gold #c9a84c
-- [x] Dark/light contrast
-- [x] Amiri + Plus Jakarta Sans fonts
-- [x] Scroll animations
+### Blog System
+- [x] Content Collection dengan Astro v7 glob loader
+- [x] `/blog` — listing semua artikel
+- [x] `/blog/[slug]` — artikel individual dengan styled prose
+- [x] 3 sample articles dari blueprint masco_19_artikelseo.json
 
-### Blog (NEW)
-- [x] Content Collection setup (Astro v7 glob loader)
-- [x] `/blog` index page
-- [x] `/blog/[slug]` dynamic pages
-- [x] 3 sample articles published
-- [x] Nav link to Blog added
-- [x] Image assets copied (IQC.jpg, HIT.jpg, Logo KU.png)
-
-### Image Assets
+### Assets
 - [x] `public/images/Donasi/IQC.jpg`
 - [x] `public/images/Donasi/HIT.jpg`
 - [x] `public/images/Copy of Logo KU.png`
+
+### Navigation
+- [x] Link ke Blog ditambahkan di nav
 
 ---
 
@@ -56,24 +40,93 @@ Live URL: https://stpkupbun.pages.dev
 
 ### High Priority
 1. **Submit sitemap ke Google Search Console**
-   - Add property: `https://stpkupbun.pages.dev`
-   - Submit: `https://stpkupbun.pages.dev/sitemap-index.xml`
+   - Property: `https://stpkupbun.pages.dev`
+   - Sitemap: `https://stpkupbun.pages.dev/sitemap-index.xml`
+   - Steps: search.google.com → Add Property → Submit sitemap
 
 2. **Redirect 301 WordPress → Astro**
-   - Hubungi admin WordPress
+   - Butuh akses admin WordPress lama
    - Setup di .htaccess atau plugin Redirection
-   - Note: User perlu akses ke WordPress lama
+   - Redirect semua URL lama ke URL baru
 
-3. **Write 16 remaining articles** dari masco_19_artikelseo.json
-   - Blueprint ada di `../MascoKU/masco_19_artikelseo.json`
-   - Sudah ada 3 sample posts (draft 1, 2, 3)
-   -剩下 16 articles
+3. **16 remaining articles** (3 dari 19 sudah)
+   - Blueprint: `MascoKU/masco_19_artikelseo.json`
+   - Articles done: #1 (parenting), #2 (knowing-vs-being), #3 (testimoni)
 
 ### Medium Priority
 4. **AIKU Generator** — Cloudflare Access protection
-5. **Full image copy** dari ImageKU/ ke public/
+5. **Copy remaining images** dari ImageKU/ ke public/
+6. **OG images** untuk blog posts
 
 ### Low Priority
-6. **Performance** — Lazy loading, font optimization
-7. **Analytics** — Cloudflare Analytics
-8. **OG images** untuk blog posts
+7. **Performance** — Lazy loading, font optimization
+8. **Analytics** — Cloudflare Analytics
+
+---
+
+## Tech Stack
+
+```
+Astro: 7.x
+Tailwind CSS: v4 (via @tailwindcss/vite)
+Content: Markdown files (glob loader)
+Hosting: Cloudflare Pages
+```
+
+---
+
+## File Structure
+
+```
+stpkupbun/
+├── src/
+│   ├── content.config.ts          # Astro v7 content config
+│   ├── content/
+│   │   └── blog/                 # 3 markdown articles
+│   ├── layouts/
+│   │   └── BaseLayout.astro      # Nav, footer, scripts
+│   ├── pages/
+│   │   ├── index.astro           # Landing page
+│   │   ├── donasiku.astro        # Donation page
+│   │   └── blog/
+│   │       ├── index.astro        # Blog listing
+│   │       └── [slug].astro       # Blog post
+│   └── styles/
+│       └── global.css             # Theme + animations
+├── public/
+│   ├── favicon.svg
+│   ├── robots.txt
+│   └── images/
+│       ├── Donasi/
+│       │   ├── IQC.jpg
+│       │   └── HIT.jpg
+│       └── Copy of Logo KU.png
+├── astro.config.mjs
+└── package.json
+```
+
+---
+
+## Deployment
+
+```bash
+git push main    # Auto-deploy Cloudflare Pages
+```
+
+URL akan ter-update dalam ~1-2 menit setelah push.
+
+---
+
+## Reference Files
+
+```
+MascoKU/masco_19_artikelseo.json  # Blueprint 19 artikel (3 done)
+MascoKU/Brief_Build_Astro_STPKU_CloudflarePages.md
+ImageKU/                            # Source gambar (sudah dicopy sebagian)
+```
+
+---
+
+**Created:** 24 Juni 2026
+**Updated:** 24 Juni 2026 (Blog phase complete)
+**By:** GINK Digital × Claude Code
